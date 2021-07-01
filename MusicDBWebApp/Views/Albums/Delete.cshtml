@@ -1,0 +1,31 @@
+﻿@model MusicDBWebApp.Models.Album
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="container mb-3">
+    <div class="text-center">
+        <h1 class="display-4 heading-font">Album Operations</h1>
+        <p>Delete Album Details</p>
+    </div>
+
+    <p>
+        <a asp-action="Index" class="btn btn-primary">View All Artist</a>
+    </p>
+    <hr />
+    <div class="row mb-3">
+        <div class="col-md-8">
+            <h2>Album Name: @Model.AlbumName</h2>
+            <h2>Number of Songs: @Model.Songs</h2>
+            <h2>Genre: @Model.Genre.GenreName</h2>
+            <h2>Artist Name: @Model.Artist.ArtistName</h2>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="AlbumID" />
+                <input type="submit" value="Delete Album Details" class="btn btn-danger" />
+            </form>
+        </div>
+        <div class="card col-md-4">
+            <img class="card-img-top" src="~/album/@Model.AlbumID@Model.Extension" alt="@Model.AlbumName" style="width:100%">
+        </div>
+    </div>
+</div>

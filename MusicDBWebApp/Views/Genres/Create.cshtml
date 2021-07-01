@@ -1,0 +1,37 @@
+﻿@model MusicDBWebApp.Models.Genre
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4 heading-font">Genre Operations</h1>
+        <p>Add New Genre</p>
+    </div>
+    <p>
+        <a asp-action="Index" class="btn btn-primary">All Genres</a>
+    </p>
+    <hr />
+    <div class="row">
+        <div class="card col-md-4 border-0">
+            <img class="card-img-top img-fluid" src="~/common.png" alt="" style="width:100%">
+        </div>
+        <div class="col-md-8">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="GenreName" class="control-label"></label>
+                    <input asp-for="GenreName" class="form-control" />
+                    <span asp-validation-for="GenreName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save Genre Details" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

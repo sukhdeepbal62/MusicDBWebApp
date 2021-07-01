@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MusicDBWebApp.Models.Genre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4 heading-font">Genre Operations</h1>
+        <p>All Genre Details</p>
+    </div>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Add New Genre</a>
+    </p>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.GenreName)
+                </th>
+                <th colspan="2" align="center">Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GenreName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" class="btn btn-info" asp-route-id="@item.GenreID">Edit</a>
+                        </td>
+                    <td>
+                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.GenreID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

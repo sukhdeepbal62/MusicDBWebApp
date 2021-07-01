@@ -1,0 +1,45 @@
+﻿@model MusicDBWebApp.Models.Artist
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4 heading-font">Artist Operations</h1>
+        <p>Edit Artist Details</p>
+    </div>
+    <p>
+        <a asp-action="Index" class="btn btn-primary">View All Artist</a>
+    </p>
+    <hr />
+    <div class="row">
+        <div class="card col-md-4 border-0">
+            <img class="card-img-top img-fluid" src="~/common.png" alt="" style="width:100%">
+        </div>
+        <div class="col-md-8">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ArtistID" />
+                <input type="hidden" asp-for="Extension" />
+                <div class="form-group">
+                    <label asp-for="ArtistName" class="control-label"></label>
+                    <input asp-for="ArtistName" class="form-control" />
+                    <span asp-validation-for="ArtistName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="About" class="control-label"></label>
+                    <textarea asp-for="About" class="form-control"></textarea>
+                    <span asp-validation-for="About" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save Artist Details" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

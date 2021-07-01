@@ -1,0 +1,57 @@
+﻿@model MusicDBWebApp.Models.Album
+
+@{
+    ViewData["Title"] = "ViewDetails";
+}
+
+<div class="container mb-3">
+    <div class="text-center">
+        <h1 class="display-4 heading-font">Album Details</h1>
+    </div>
+    <hr />
+    <div class="row mb-3">
+        <div class="col-md-8">
+            <h2>Album Name: @Model.AlbumName</h2>
+            <h2>Songs: @Model.Songs</h2>
+            <h2>Artist Name: @Model.Artist.ArtistName</h2>
+            <h2>Genre Name: @Model.Genre.GenreName</h2>
+            <a class="btn btn-primary btn-block" asp-area="" asp-controller="Home"
+               asp-action="ShareReview" asp-route-id="@Model.AlbumID">Share Your Review</a>
+        </div>
+        <div class="card col-md-4">
+            <img class="card-img-top" src="~/album/@Model.AlbumID@Model.Extension" alt="@Model.AlbumName" style="width:100%">
+        </div>
+    </div>
+    <h1 class="heading-font">Reviews</h1>
+    <div class="row mb-3">
+        @if (Model.Reviews.Count == 0)
+        {
+            <h1 class="heading-font">There is No Review Yet.</h1>
+        }
+        else
+        {
+            @foreach (var review in Model.Reviews)
+            {
+                <div class="col-1"></div>
+                <div class="col-10 mb-3 ">
+                    <div class="card p-5">
+                        <h5 class="card-title">@review.UserID</h5>
+                        <p class="card-text">@review.ReviewText</p>
+                        <p class="card-text">
+                            @for (int i = 1; i <= review.Rating; i++)
+                            {
+                                <i class="fa fa-star"></i>
+                            }
+                            @for (int i = 1; i <= 5 - review.Rating; i++)
+                            {
+                                <i class="fa fa-star-o"></i>
+                            }
+                        </p>
+                        <p class="card-text">Review Date: @review.ReviewDate</p>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            }
+        }
+    </div>
+</div>

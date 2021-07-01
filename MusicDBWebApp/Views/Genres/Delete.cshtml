@@ -1,0 +1,36 @@
+﻿@model MusicDBWebApp.Models.Genre
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4 heading-font">Genre Operations</h1>
+        <p>Delete Genre Details</p>
+    </div>
+    <p>
+        <a asp-action="Index" class="btn btn-primary">All Genres</a>
+    </p>
+    <hr />
+    <div class="row">
+        <div class="card col-md-4 border-0">
+            <img class="card-img-top img-fluid" src="~/common.png" alt="" style="width:100%">
+        </div>
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.GenreName)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.GenreName)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="GenreID" />
+                <input type="submit" value="Delete Genre Details" class="btn btn-danger" /> 
+            </form>
+        </div>
+    </div>
+</div>

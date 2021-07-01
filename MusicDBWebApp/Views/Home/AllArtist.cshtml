@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MusicDBWebApp.Models.Artist>
+
+@{
+    ViewData["Title"] = "AllArtist";
+}
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4 heading-font">All Artist</h1>
+    </div>
+    <div class="row" style="margin-bottom:50px;">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card w-100">
+                    <center>
+                        <img src="~/artist/@item.ArtistID@item.Extension" alt="" class="fixed-image">
+                    </center>
+                    <div class="card-body">
+                        <h5 class="card-text">
+                            @item.ArtistName
+                        </h5>
+                        <a class="btn btn-primary btn-block" asp-action="ViewAlbumByArtist" asp-route-id="@item.ArtistID">View Albums</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
